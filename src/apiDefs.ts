@@ -175,7 +175,8 @@ export function withApiDescription(urlFragment: string, fn: (apiDesc: IApiDescri
 }
 
 export function lookupApi(urlFragment: string): IApiDescription | null {
-  for (const cat of Object.values(apiDefs)) {
+  for (const catKey in apiDefs) {
+    const cat = apiDefs[catKey];
     for (const api of cat.apis) {
       if (api.urlFragment === urlFragment) {
         return api;
